@@ -1,19 +1,44 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Admin</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>にんにん板</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: "MS Mincho", serif;
+        }
+        .header {
+            text-align: center;
+        }
+        .content {
+            text-align: center;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: darkred;
+            color: white;
+            text-decoration: none;
+            font-family: "MS Mincho", serif;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div class="header">
-        <h2>Admin - Home</h2>
-        <p>test</p>
+        <h2>にんにん板</h2>
     </div>
     <div class="content">
-        <a href="add.php">Add User</a>
-        <a href="delete.php">Delete User</a>
-        <a href="update.php">Update User</a>
-        <a href="view.php">View Users</a>
-        <a href="logout.php">Logout</a>
+        <p>にんにん板へようこそ！</p>
+        <a href="add.php" class="button">ユーザーを追加</a>
+        <a href="delete.php" class="button">ユーザーを削除</a>
+        <a href="update.php" class="button">ユーザーを更新</a>
+        <a href="view.php" class="button">ユーザーを表示</a>
+        <a href="logout.php" class="button">ログアウト</a>
     </div>
 </body>
 </html>
