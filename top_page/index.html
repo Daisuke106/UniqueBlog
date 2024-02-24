@@ -3,7 +3,7 @@
 <head>
     <title>にんにん板</title>
     <style>
-        body {
+        h2 {
             background-color: black;
             color: white;
             font-family: "MS Mincho", serif;
@@ -15,7 +15,6 @@
             text-align: center;
         }
         .button {
-            display: inline-block;
             padding: 10px 20px;
             margin: 5px;
             background-color: navy;
@@ -25,22 +24,65 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: darkred;
+        }
+        .content img {
+            margin: 10px;
+            max-width: 100%;
+            height: auto;
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+        }
+        p {
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-family: "MS Mincho", serif;
+        }
+        footer {
+            text-align: center;
+            font-family: "MS Mincho", serif;
         }
     </style>
 </head>
 <body>
-    <div class="header">
+    <header class="header">
         <h2>にんにん板</h2>
-    </div>
-    <div class="content">
-        <img src="ninja.png" alt="忍者の画像">
-        <img src="ninniku_kuro.png" alt="黒ニンニクの画像">
-        <p>にんにん板へようこそ！</p>
-        <a href="add.php" class="button">ユーザーを追加</a>
-        <a href="delete.php" class="button">ユーザーを削除</a>
-        <a href="update.php" class="button">ユーザーを更新</a>
-        <a href="view.php" class="button">ユーザーを表示</a>
-        <a href="logout.php" class="button">ログアウト</a>
-    </div>
+    </header>
+    <main class="content">
+        <div class="image-container">
+            <img src="ninja.png" alt="忍者の画像">
+            <img src="ninniku_kuro.png" alt="黒ニンニクの画像">
+        </div>
+        <p>にんにん板へようこそ！<br>まずはこちらからログインを行ってください。</p>
+        <?php
+            // ログイン状態の判定
+            $logged_in = false;
+            if ($logged_in) {
+                // ログインしている場合
+        ?>
+            <nav>
+                <a href="add.php" class="button">ユーザーを追加</a>
+                <a href="delete.php" class="button">ユーザーを削除</a>
+                <a href="update.php" class="button">ユーザーを更新</a>
+                <a href="view.php" class="button">ユーザーを表示</a>
+                <a href="logout.php" class="button">ログアウト</a>
+            </nav>
+        <?php
+            } else {
+                // ログインしていない場合
+        ?>
+            <a href="login.php" class="button">ログインする</a>
+        <?php
+            }
+        ?>
+    </main>
+    <footer>
+        <p>&copy; 2024 Nin-Nin Master</p>
+    </footer>
 </body>
 </html>
