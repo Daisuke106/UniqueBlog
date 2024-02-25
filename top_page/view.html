@@ -90,45 +90,17 @@
         <h1>にんにん板</h1>
     </header>
     <main>
-        <div class="image-container">
-            <img src="ninja.png" alt="忍者の画像">
-            <img src="ninniku_kuro.png" alt="黒ニンニクの画像">
-        </div>
-        <h2>にんにん板へようこそ！<br>まずはこちらからログインを行ってください。</h2>
-        <?php
-            // ログイン状態の判定
-            $logged_in = false;
-            if ($logged_in) {
-                // ログインしている場合
-        ?>
+        <h2>ユーザー一覧ページです。<br>ここではユーザーの追加や削除が行えます。</h2>
             <nav style="text-align: center;">
-                <a href="../account2/blog_page/index.html" class="button">記事一覧</a>
-                <a href="view.html" class="button">ユーザーを表示</a>
-                <a href="logout.php" class="button">ログアウト</a>
+                <a href="add.php" class="button">ユーザーを追加</a>
+                <a href="delete.php" class="button">ユーザーを削除</a>
             </nav>
-            
-        <?php
-            } else {
-                // ログインしていない場合
-        ?>
             <nav style="text-align: center;">
-                <a href="http://localhost:3000/account2/php/loginform.php" class="button">ログインする</a>
+                <a href="index.html" class="button">ホームに戻る</a>
             </nav>
-        <?php
-            }
-        ?>
     </main>
     <footer>
         <p>&copy; <?php echo date("Y"); ?>2024 Nin-Nin Master</p>
     </footer>
-    <div class="loading-overlay" style="display: none;">
-        <img src="garlic.png" alt="ローディング画像" class="loading-icon">
-    </div>
-    <script>
-        // ページが読み込まれた後にローディング画面を非表示にする
-        window.addEventListener('load', function () {
-            document.querySelector('.loading-overlay').style.visibility = 'hidden';
-        });
-    </script>
 </body>
 </html>
