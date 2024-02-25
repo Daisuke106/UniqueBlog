@@ -29,12 +29,12 @@ function sendCompleteEmailResponse($email, $username, $app_password, $id) {
         $idname      = $username;
     
         $from        = 'k022c2145@g.neec.ac.jp';
-        $fromname    = 'Daistyle';
+        $fromname    = 'にんにん版';
     
         $to = $email;
         $toname = $username;
     
-        $subject = '【登録完了】Daistyleへの会員登録が完了しました。';
+        $subject = '【登録完了】にんにん版への会員登録が完了しました。';
 
         // Generate the QR code containing the $id
         $data_string = $id;
@@ -55,7 +55,7 @@ function sendCompleteEmailResponse($email, $username, $app_password, $id) {
         $qrCodeImage -> saveToFile($attachmentPath);
 
         $body =  "$idname 様\n"
-                ."Daistyleへの会員登録ありがとうございます。" . "\n"
+                ."にんにん版への会員登録ありがとうございます。" . "\n"
                 ."\n"
                 . "ご登録が完了しました。" . "\n"
                 . "あなたのid番号をお知らせします。" . "\n"
@@ -70,7 +70,7 @@ function sendCompleteEmailResponse($email, $username, $app_password, $id) {
                 . "\n"
                 . 'このメールに心当たりがない場合は、このメールを破棄してください。'
                 . "\n"
-                . 'Daistyle'
+                . 'にんにん版'
                 . "\n"
                 . 'http://localhost:3000/shop_site/top_page/main.php'
                 . "\n";
