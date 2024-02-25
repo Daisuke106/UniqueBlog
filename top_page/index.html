@@ -94,14 +94,14 @@
             <img src="ninja.png" alt="忍者の画像">
             <img src="ninniku_kuro.png" alt="黒ニンニクの画像">
         </div>
-        <h3>にんにん板へようこそ！<br>まずはこちらからログインを行ってください。</h3>
+        <h2>にんにん板へようこそ！<br>まずはこちらからログインを行ってください。</h2>
         <?php
             // ログイン状態の判定
             $logged_in = false;
             if ($logged_in) {
                 // ログインしている場合
         ?>
-            <nav>
+            <nav style="text-align: center;">
                 <a href="add.php" class="button">ユーザーを追加</a>
                 <a href="delete.php" class="button">ユーザーを削除</a>
                 <a href="update.php" class="button">ユーザーを更新</a>
@@ -113,7 +113,9 @@
             } else {
                 // ログインしていない場合
         ?>
-            <a href="../php/loginform.php" class="button">ログインする</a>
+            <nav style="text-align: center;">
+                <a href="http://localhost:3000/account2/php/loginform.php" class="button">ログインする</a>
+            </nav>
         <?php
             }
         ?>
