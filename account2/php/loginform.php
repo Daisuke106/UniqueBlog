@@ -104,7 +104,7 @@ $db_password = ''; // データベースパスワード
 <head>
 <meta charset="utf-8">
 <title>Sign in & Sign up Form</title>
-<link rel="icon" href="http://localhost:3000/logo/text.ico">
+<link rel="icon" href="http://localhost:3000/logo/garlic.jpg">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- <script src="https://kit.fontawesome.com/a076d05399.js"></script> -->
 <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
@@ -408,18 +408,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const signUpForm = document.querySelector(".sign-up-form");
     const emailError = document.querySelector("#email-error");
 
-    // signUpForm.addEventListener("submit", (event) => {
-    //     const email = emailInput.value;
-    //     const emailParts = email.split('@');
-    //     const domain = emailParts[1];
-
-    //     if (domain !== "g.neec.ac.jp") {
-    //         event.preventDefault(); // フォーム送信を阻止
-    //         emailError.textContent = "学校から配布されたアドレスを使用してください";
-    //         emailError.style.display = "block";
-    //     }
-    // });
-
     emailInput.addEventListener("input", () => {
         emailError.style.display = "none";
     });
@@ -581,7 +569,7 @@ signinForm.addEventListener("submit", async (event) => {
 
 			// ログイン成功の場合
 		const formData = new FormData(signinForm);
-		const response = await fetch("process_signin.php", {
+		const response = await fetch("../account_process/process_signin.php", {
 			method: "POST",
 			body: formData
 		});
@@ -596,7 +584,7 @@ signinForm.addEventListener("submit", async (event) => {
         } else if (resultArray[0] === "success_unconfirmed") {
 			alert("アカウントが未承認です。確認コードを入力してください。メールをお送りします。");// アカウント未承認時のレスポンス
             // 会員登録成功かつ未確認の場合、確認コード入力ページに遷移
-            window.location.href = "confirmation_input_page.php";
+            window.location.href = "../account_process/confirmation_input_page.php";
 
 			// Gmailのウェブサイトを新しいタブで開く
 			window.open('https://mail.google.com', '_blank');

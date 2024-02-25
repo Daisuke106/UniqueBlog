@@ -96,7 +96,7 @@ function sendConfirmationEmail($email, $confirmation_code, $username, $app_passw
         $password = $app_password; // AppPasswordを使用
 
         $from = 'k022c2145@g.neec.ac.jp';
-        $fromname = 'Daistyle';
+        $fromname = 'にんにん版';
 
         $to = $email;
         $toname = $username;
@@ -105,18 +105,20 @@ function sendConfirmationEmail($email, $confirmation_code, $username, $app_passw
         $body = "$idname 様\n"
             . "\n"
             . "\n"
-            . "Daistyleへのご利用ありがとうございます。" . "\n"
+            . "にんにん版へのご利用ありがとうございます。" . "\n"
             . "\n"
             . '仮パスワードのコード: ' . $confirmation_code
             . "\n"
             . "\n"
             . 'このコードを以下のサイトに入力してください。'
+            . '\n'
+            .'完了まであと少し！！'
             . "\n"
-            . 'http://localhost:3000/Login&Register_form/new_password.php'
+            . 'http://localhost:3000/account2/account_process/new_password.php'
             . "\n"
             . 'このメールに心当たりがない場合は、このメールを破棄してください。'
             . "\n"
-            . 'Daistyle'
+            . 'にんにん版'
             . "\n"
             . 'http://localhost:3000/shop_site/top_page/main.php'
             . "\n"

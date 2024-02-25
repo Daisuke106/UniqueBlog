@@ -26,7 +26,7 @@ function sendLoginIssueEmail($email, $username, $app_password, $subject, $messag
         $password    = $app_password; // Your Gmail App Password
     
         $from        = 'k022c2145@g.neec.ac.jp';
-        $fromname    = 'Daistyle';
+        $fromname    = 'にんにん版';
     
         $to = $email;
         $toname = $username;
@@ -120,7 +120,7 @@ function sendConfirmationEmail($email, $confirmation_code, $app_password, $usern
         $password    = $app_password;// AppPasswordを使用
     
         $from        = 'k022c2145@g.neec.ac.jp';
-        $fromname    = 'Daistyle';
+        $fromname    = 'にんにん版';
     
         $to = $email;
         $toname = $username;
@@ -129,7 +129,7 @@ function sendConfirmationEmail($email, $confirmation_code, $app_password, $usern
         $body =  "$idname 様\n"
                 . "\n"
                 . "\n"
-                ."Daistyleへの会員登録ありがとうございます。" . "\n"
+                ."にんにん版への会員登録ありがとうございます。" . "\n"
                 ."確認コードはログイン時に必要となります。" . "\n"
                 . "\n"
                 . "以下の確認コードを入力してください。" . "\n"
@@ -141,7 +141,7 @@ function sendConfirmationEmail($email, $confirmation_code, $app_password, $usern
                 . "\n"
                 . 'このメールに心当たりがない場合は、このメールを破棄してください。'
                 . "\n"
-                . 'Daistyle'
+                . 'にんにん版'
                 . "\n"
                 . 'https://www.google.com/'
                 . "\n";

@@ -137,12 +137,12 @@ class Client
     /**
      * Returns relevant endpoint path
      *
-     * @param String $endpointName Name of Endpoint
+    * @param string $endpointName Name of Endpoint
      * @return String
      */
     public function GetEndpoint($endpointName)
     {
-        return $this->endpoints[$endpointName];
+        return $this->endpoints[(string)$endpointName];
     }
     /**
      * Returns relevant endpoint version
