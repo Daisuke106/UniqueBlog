@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>にんにん板</title>
     <style>
-        h2 {
+        h1 {
+            text-align: center;
             background-color: black;
             color: white;
             font-family: "MS Mincho", serif;
         }
-        h3 {
+        h2 {
+            text-align: center;
             font-family: "MS Mincho", serif;
             font-size: 24px;
             font-weight: bold;
@@ -20,8 +24,9 @@
             text-align: center;
         }
         .button {
+            display: inline-block;
+            margin: 0 auto;
             padding: 10px 20px;
-            margin: 5px;
             background-color: navy;
             color: white;
             text-decoration: none;
@@ -30,7 +35,7 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-        }
+        }        
         .button:hover {
             background-color: darkred;
         }
@@ -52,42 +57,70 @@
             text-align: center;
             font-family: "MS Mincho", serif;
         }
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            visibility: hidden;
+        }
+
+        .loading-icon {
+            animation: rotate 2s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 <body>
-    <header class="header">
-        <h2>にんにん板</h2>
+    <header>
+        <h1>にんにん板</h1>
     </header>
-    <main class="content">
+    <main>
         <div class="image-container">
             <img src="ninja.png" alt="忍者の画像">
             <img src="ninniku_kuro.png" alt="黒ニンニクの画像">
         </div>
-        <h3>にんにん板へようこそ！<br>まずはこちらからログインを行ってください。</h3>
-        <?php
-            // ログイン状態の判定
-            $logged_in = false;
-            if ($logged_in) {
-                // ログインしている場合
-        ?>
-            <nav>
-                <a href="add.php" class="button">ユーザーを追加</a>
-                <a href="delete.php" class="button">ユーザーを削除</a>
-                <a href="update.php" class="button">ユーザーを更新</a>
-                <a href="view.php" class="button">ユーザーを表示</a>
-                <a href="logout.php" class="button">ログアウト</a>
-            </nav>
-        <?php
-            } else {
-                // ログインしていない場合
-        ?>
-            <a href="login.php" class="button">ログインする</a>
-        <?php
-            }
-        ?>
+        <section>
+            <h2>にんにん板へようこそ！</h2>
+            <?php if ($logged_in): ?>
+                <nav style="text-align: center;">
+                    <a href="add.php" class="button">ユーザーを追加</a>
+                    <a href="delete.php" class="button">ユーザーを削除</a>
+                    <a href="view.php" class="button">ユーザーを表示</a>
+                    <a href="logout.php" class="button">ログアウト</a>
+                </nav>
+            <?php else: ?>
+                <nav style="text-align: center;">
+                <a href="login.php" class="button">ログインする</a>
+                </nav>
+            <?php endif; ?>
+        </section>
     </main>
     <footer>
-        <p>&copy; 2024 Nin-Nin Master</p>
+        <p>&copy; <?php echo date("Y"); ?>2024 Nin-Nin Master</p>
     </footer>
+    <div class="loading-overlay">
+        <img src="garlic.png" alt="ローディング画像" class="loading-icon">
+    </div>
+    <script>
+        // ページが読み込まれた後にローディング画面を非表示にする
+        window.addEventListener('load', function () {
+            document.querySelector('.loading-overlay').style.visibility = 'hidden';
+        });
+    </script>
 </body>
 </html>
