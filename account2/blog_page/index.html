@@ -1,134 +1,120 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>にんにん板</title>
-    <style>
-        h2 {
-            background-color: black;
-            color: white;
-            font-family: "MS Mincho", serif;
-        }
-        h3 {
-            font-family: "MS Mincho", serif;
-        }
-        h4 {
-            font-family: "MS Mincho", serif;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .header {
-            text-align: center;
-        }
-        .content {
-            text-align: center;
-        }
-        .button {
-            padding: 10px 20px;
-            margin: 5px;
-            background-color: navy;
-            color: white;
-            text-decoration: none;
-            font-family: "MS Mincho", serif;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .button:hover {
-            background-color: darkred;
-        }
-        footer {
-            text-align: center;
-            font-family: "MS Mincho", serif;
-        }
-    </style>
+  <title>にんにん板</title>
+  <style>
+    h2 {
+      background-color: black;
+      color: white;
+      font-family: "MS Mincho", serif;
+    }
+    h3 {
+      font-family: "MS Mincho", serif;
+    }
+    h4 {
+      font-family: "MS Mincho", serif;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .header {
+      text-align: center;
+    }
+    .content {
+      text-align: center;
+    }
+    .button {
+      padding: 10px 20px;
+      margin: 5px;
+      background-color: navy;
+      color: white;
+      text-decoration: none;
+      font-family: "MS Mincho", serif;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .button:hover {
+      background-color: darkred;
+    }
+    footer {
+      text-align: center;
+      font-family: "MS Mincho", serif;
+    }
+  </style>
 </head>
 <body>
-    <header class="header">
-      <h2>にんにん板</h2>
-    </header>
-    <main class="content">
-      <div id="投稿エリア" class="hidden">
-        <h3>記事投稿</h3>
-        <form id="投稿フォーム" action="post_process.php.php" method="post" enctype="multipart/form-data">
-          <label for="username">ユーザ名:</label>
-          <input type="text" id="username" name="username" required>
-          <br>
-          <label for="content">投稿内容:</label>
-          <br>
-          <textarea id="content" name="content" rows="10" required></textarea>
-          <br>
-          <label for="image">添付画像:</label>
-          <input type="file" id="image" name="image">
-          <br>
-          <button type="submit">投稿</button>
-        </form>
-      </div>
-      <h3 id="投稿者名">ようこそ、ななしさん</h3>
-      <h4>投稿記事一覧</h4>
-      <div id="記事一覧"></div>
-      <a href="#" class="button" id="新規記事作成ボタン">新規記事作成</a>
-      <a href="../../top_page/index.html" class="button">ホームに戻る</a>
-    </main>
-    <footer>
-      <p>&copy; 2024 Nin-Nin Master</p>
-    </footer>
-    <script src="script.js"></script>
-  </body>
+  <header class="header">
+    <h2>にんにん板</h2>
+  </header>
+  <main class="content">
+    <div id="投稿エリア" class="hidden">
+      <h3>記事投稿</h3>
+      <form id="投稿フォーム" action="post_process.php" method="post" enctype="multipart/form-data">
+        <label for="username">ユーザ名:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="content">投稿内容:</label>
+        <br>
+        <textarea id="content" name="content" rows="10" required></textarea>
+        <br>
+        <label for="image">添付画像:</label>
+        <input type="file" id="image" name="image">
+        <br>
+        <button type="submit">投稿</button>
+      </form>
+    </div>
+    <h3 id="投稿者名">ようこそ、ななしさん</h3>
+    <h4>投稿記事一覧</h4>
+    <div id="記事一覧"></div>
+    <a href="#" class="button" id="新規記事作成ボタン">新規記事作成</a>
+    <a href="../../top_page/index.html" class="button">ホームに戻る</a>
+    <br>
+    <button id="接続確認ボタン" class="button">データベース接続確認</button>
+  </main>
+  <footer>
+    <p>&copy; 2024 Nin-Nin Master</p>
+  </footer>
   <script>
+    // 投稿エリアと記事一覧の取得
     const 投稿エリア = document.getElementById('投稿エリア');
-    const 投稿フォーム = document.getElementById('投稿フォーム');
     const 記事一覧 = document.getElementById('記事一覧');
-    const 投稿者名 = document.getElementById('投稿者名');
-    
-    // ログイン状態チェック
-    if (ログイン状態 === true) {
-      投稿エリア.classList.remove('hidden');
-      投稿者名.textContent = 'ようこそ、' + ユーザ名 + 'さん';
-    } else {
-      投稿エリア.classList.add('hidden');
-      投稿者名.textContent = 'ログインが必要です';
-    }
-    const 新規記事作成ボタン = document.getElementById('新規記事作成ボタン');
-    
-    新規記事作成ボタン.addEventListener('click', function() {
-      投稿エリア.classList.remove('hidden');
-    });
-    // 記事一覧の取得
-    function 記事一覧取得() {
+    const 接続確認ボタン = document.getElementById('接続確認ボタン');
+
+    // データベース接続確認
+    接続確認ボタン.addEventListener('click', function() {
       const xhr = new XMLHttpRequest();
-      xhr.open('GET', '記事一覧取得.php');
+      xhr.open('GET', 'db_connect_check.php');
       xhr.onload = function() {
         if (xhr.status === 200) {
-          記事一覧.innerHTML = xhr.responseText;
+          if (xhr.responseText === 'success') {
+            alert('データベース接続に成功しました');
+          } else {
+            alert('データベース接続に失敗しました');
+          }
         } else {
-          console.error('記事一覧の取得に失敗しました');
+          console.error('エラーが発生しました');
         }
       };
       xhr.send();
-    }
-    
+    });
+
     // 記事投稿
     投稿フォーム.addEventListener('submit', function(e) {
       e.preventDefault();
-    
+
+      // フォームデータの取得
       const formData = new FormData(投稿フォーム);
-    
+
+      // 非同期通信で記事投稿処理を実行
       const xhr = new XMLHttpRequest();
       xhr.open('POST', 'post_process.php');
       xhr.onload = function() {
         if (xhr.status === 200) {
+          // 投稿成功時の処理
           記事一覧取得();
           投稿フォーム.reset();
         } else {
           console.error('記事の投稿に失敗しました');
         }
-      };
-      xhr.send(formData);
-    });
-    
-    // 30秒間隔で記事一覧を自動リロード
-    setInterval(記事一覧取得, 30000);
-    記事一覧取得();
-  </script>
-</html>
+      
