@@ -113,25 +113,10 @@
             } else {
                 // ログインしていない場合
         ?>
-            <a href="login.php" class="button">ログインする</a>
+            <a href="../php/loginform.php" class="button">ログインする</a>
         <?php
             }
         ?>
-        <section>
-            <h2>にんにん板へようこそ！</h2>
-            <?php if ($logged_in): ?>
-                <nav style="text-align: center;">
-                    <a href="add.php" class="button">ユーザーを追加</a>
-                    <a href="delete.php" class="button">ユーザーを削除</a>
-                    <a href="view.php" class="button">ユーザーを表示</a>
-                    <a href="logout.php" class="button">ログアウト</a>
-                </nav>
-            <?php else: ?>
-                <nav style="text-align: center;">
-                <a href="login.php" class="button">ログインする</a>
-                </nav>
-            <?php endif; ?>
-        </section>
     </main>
     <footer>
         <p>&copy; <?php echo date("Y"); ?>2024 Nin-Nin Master</p>
